@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+          button {
+          width: 100%;
+          box-sizing: border-box;
+          }
+          input {
+              width: 50px;
+              text-align: right;
+          }
+          .container {
+              background-color: blue;
+          }
+          .circle {
+              width: 25px;
+              height: 25px;
+              border-radius: 13px;
+              background-color: red;
+              text-align: center;
+              vertical-align: center;
+              display: inline-block;
+          }
+          .blank-box {
+              width: 10px;
+              display: inline-block;
+          }
+          .float-break {
+              clear: both;
+          }
+          .blank-circle {
+              width: 25px;
+              height: 25px;
+              border-radius: 13px;
+              -background-color: green;
+              color: white;
+              text-align: center;
+              vertical-align: center;
+              display: inline-block;
+          }
+    </style>
+    <script>
+           function getRandomInt(min, max) {
+              return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+          // Populate Num 1
+          function populateNum1() {
+              var num1node = document.getElementById("num1");
+              num1node.value = getRandomInt(1,5);
+
+              for (var i = 1; i <= num1node.value; i++) {
+
+              }
+              // loop n from 1 to num1node.value
+              //     take nth circle in the first set of circles and change its class to "circle"
+          }
+
+          // Populate Num 2
+          function populateNum2() {
+              var num2node = document.getElementById("num2");
+              num2node.value = getRandomInt(1,5);
+          }
+
+          // Check Answer
+          function checkAnswer() {
+              var ansnode = document.getElementById("ans");
+              var num1node = document.getElementById("num1");
+              var num2node = document.getElementById("num2");
+
+              var rightAnswer = parseInt(num1node.value) + parseInt(num2node.value);
+              if (parseInt(ansnode.value) == rightAnswer) {
+                  // Reach here if answer is correct. Set ansnode color to Green.
+                  ansnode.style.backgroundColor = "green";
+              } else {
+                  // Reach here if answer is incorrect. Set ansnode color to Red.
+                  ansnode.style.backgroundColor = "red";
+              }
+
+          }
+
+
+          // Populates answer
+          function showAdd() {
+              var num1node = document.getElementById("num1");
+              var num2node = document.getElementById("num2");
+              var ansnode = document.getElementById("ans");
+              ansnode.value = parseInt(num1node.value) + parseInt(num2node.value);
+          }
+
+          // Resets the game with new problem
+          function resetQuestion() {
+              populateNum1();
+              populateNum2();
+              var ansnode = document.getElementById("ans");
+              ansnode.value = "***";
+              ansnode.style.backgroundColor = "white";
+          } 
+
+
+          // Main initialization flow.
+          populateNum1();
+          populateNum2();
+
+          // Add click listener to answer button
+          var ansButtonNode = document.getElementById("ansButton");
+          ansButtonNode.addEventListener("click", showAdd);
+
+          // Add click listener to reset button
+          var resetButtonNode = document.getElementById("resetButton");
+          resetButton.addEventListener("click", resetQuestion);
+
+          // Add click listener to check answer
+          var checkButtonNode = document.getElementById("checkButton");
+          checkButtonNode.addEventListener("click" , checkAnswer);
+
+    </script>
+  </head>
+    <body>
+      <span class="blank-box"></span>
+        <input id="num1" />
+        <span id="circle-container-1">
+            <span class="circle">1</span>
+            <span class="circle">2</span>
+            <span class="circle">3</span>
+            <span class="circle">4</span>
+            <span class="circle">5</span>
+            <span class="blank-circle">6</span>
+            <span class="blank-circle">7</span>
+            <span class="blank-circle">8</span>
+            <span class="blank-circle">9</span>
+            <span class="blank-circle">10</span>
+        </span> 
+        <div></div>
+        <span class="blank-box">+</span>
+        <input id="num2" align="left"></input>
+        <span id="circle-container-2">
+            <span class="circle">1</span>
+            <span class="circle">2</span>
+            <span class="circle">3</span>
+            <span class="circle">4</span>
+            <span class="blank-circle">5</span>
+            <span class="blank-circle">6</span>
+            <span class="blank-circle">7</span>
+            <span class="blank-circle">8</span>
+            <span class="blank-circle">9</span>
+            <span class="blank-circle">10</span>
+        </span>
+        <hr />
+        <div class="float-break">
+        </div>
+        <span class="blank-box"></span>
+        <input id="ans" value="***"></input>
+        <span id="circle-container-ans">
+            <span class="blank-circle">1</span>
+            <span class="blank-circle">2</span>
+            <span class="blank-circle">3</span>
+            <span class="blank-circle">4</span>
+            <span class="blank-circle">5</span>
+            <span class="blank-circle">6</span>
+            <span class="blank-circle">7</span>
+            <span class="blank-circle">8</span>
+            <span class="blank-circle">9</span>
+            <span class="blank-circle">10</span>
+        </span>
+        <div>
+            <button id="ansButton">Show Answer</button>
+            <button id="checkButton">Check Answer</button>
+            <button id="resetButton">Reset Question</button>
+        </div>
+
+
+
+
+    </body>
+</html>
